@@ -1,0 +1,14 @@
+.calendar_main{
+	header {
+		ul {
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;
+			padding:0;
+			li{
+				list-style: none;
+			}
+		}
+	}
+
+}
