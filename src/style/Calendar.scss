@@ -6,15 +6,19 @@
 		h2 {
 			font-size:15px;
 		}		
-		ul {
-			display:flex;
-			flex-direction:row;
-			justify-content:space-between;
-			padding:0;
-			li{
-				list-style: none;
-			}
+		
+	}
+	ul {
+		display:flex;
+		flex-direction:row;
+		justify-content:space-between;
+		padding:0;
+		li{
+			list-style: none;
 		}
+	}
+	.calendar_cnt{
+		
 	}
 
 }
