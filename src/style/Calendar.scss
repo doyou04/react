@@ -5,31 +5,33 @@
 		}
 		h2 {
 			font-size: 15px;
+			.arrow_left {
+				margin-right:20px;
+			}
+			.arrow_right {
+				margin-left:20px;
+			}
 		}		
-		
 	}
 	ul {
 		overflow: hidden;
 		padding: 0;
-		.sunday {
-			color: #df0100;
-		}
-		.saturday {
-			color: #0575ff
-		}
+		
 		li {
 			float: left;
 			width: 14%;
 			list-style: none;
 			text-align: center;
+			font-weight: 600;
+			&.sunday {
+				color: #f70050;
+			}
+			&.saturday {
+				color: #4191f3
+			}
 		}
 	}
-	.arrow_left {
-		margin-right:20px;
-	}
-	.arrow_right {
-		margin-left:20px;
-	}
+	
 	.calendar_cnt {
 		overflow: hidden;
 		padding: 0;
@@ -40,12 +42,18 @@
 			width: 14%;
 			height: 50px;
 			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
 			&.today {
 				font-weight: bold;
-				color: #0575ff;
+				color: #4191f3
 			}
-			&.select {
-				color: rgb(4, 228, 4);
+			&.selectActive {
+				font-weight: 600;
+				border-radius: 50px;
+				box-sizing: border-box;
+				background: #02cbb8;
+				color: #fff;
 			}
 		}
 	}
