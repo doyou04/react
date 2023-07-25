@@ -70,8 +70,8 @@ const Calendar = () => {
       <header>
         <h1>{selectedYear}</h1>
         <h2>
-          <span className="arrow_left" onClick={ActionMonthLeft}>❮</span>
           {selectedMonth}월
+          <span className="arrow_left" onClick={ActionMonthLeft}>❮</span>
           <span className="arrow_right" onClick={ActionMonthRight}>❯</span>
         </h2>  
       </header>
