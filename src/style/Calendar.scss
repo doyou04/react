@@ -1,24 +1,53 @@
-.calendar_main{
+.calendar_main {
 	header {
 		h1 {
-			font-size:20px;
+			font-size: 20px;
 		}
 		h2 {
-			font-size:15px;
+			font-size: 15px;
 		}		
 		
 	}
 	ul {
-		display:flex;
-		flex-direction:row;
-		justify-content:space-between;
-		padding:0;
-		li{
+		overflow: hidden;
+		padding: 0;
+		.sunday {
+			color: #df0100;
+		}
+		.saturday {
+			color: #0575ff
+		}
+		li {
+			float: left;
+			width: 14%;
 			list-style: none;
+			text-align: center;
 		}
 	}
-	.calendar_cnt{
+	.arrow_left {
+		margin-right:20px;
+	}
+	.arrow_right {
+		margin-left:20px;
+	}
+	.calendar_cnt {
+		overflow: hidden;
+		padding: 0;
 		
+		div {
+			display: block;
+			float: left;
+			width: 14%;
+			height: 50px;
+			text-align: center;
+			&.today {
+				font-weight: bold;
+				color: #0575ff;
+			}
+			&.select {
+				color: rgb(4, 228, 4);
+			}
+		}
 	}
 
 }
