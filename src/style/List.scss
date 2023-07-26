@@ -1,4 +1,48 @@
+$primary-color: #556361;
+$primary-font: 'Noto Sans KR';
+$random: random(4);
+$list-color: (#ed8e8e,#56c1ff,#a58eed,#ed8ea8);
+$random-colors: nth($list-color, $random);
+
 .list_main {
     overflow: hidden;
+    width: 100%;
+    font-family: $primary-font;
+    ul {
+        margin: 20px 0 0;
+        padding: 0;
+        li {
+            min-height: 100px;
+            margin: 0 0 15px;
+            padding: 10px;
+            list-style: none;
+            background: $random-colors;
+            border-radius: 8px;
+            box-sizing: border-box;
+            p {
+                margin: 0;
+                padding: 0;
+                color: #fff;
+                &.list_sub_text {
+                    margin-bottom: 10px;
+                    font-size: 11px;
+                    font-weight: lighter;
+                }
+                &.list_title {
+                    margin-bottom: 5px;
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+                &.list_text {
+                    font-size: 12px;
+                    font-weight: normal;
+                }
+            }
+            
+            
+        }
+    }
+   
+   
 
 }

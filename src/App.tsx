@@ -1,13 +1,15 @@
 import React from 'react';
 import './style/App.css';
 import Main from './components/Main';
+import Header from './components/Header';
 // import Test from './components/Test';
 
 function App() {
   return (
     <div className="App">
-     <Main />
-     {/* <Test /> */}
+      <Header />
+      <Main />
+      {/* <Test /> */}
     </div>
   );
 }
