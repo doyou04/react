@@ -3,15 +3,17 @@ import '../style/Calendar.scss';
 import classnames from 'classnames';
 
 const Calendar = () => {
+  interface weekType  {
+    text: string;
+    id: number;
+  }
   const newDate:Date = new Date();
   const currentYear:number = new Date().getFullYear();
   const currentMonth:number = new Date().getMonth() + 1;
   const currentDay:number = new Date().getDate()
   // 요일
-  const weekTitles:string[]= ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-  const listItems = weekTitles.map((weekTitle:string, i:number) => 
-    <li key={`weekTitles${i}`} className={classnames({sunday: i === 0, saturday: i === 6})}>{weekTitle}</li>
-  )
+  const weekTitles:weekType[]= [{text:'Sun',id:0},{text:'Mon',id:1},{text:'Tue',id:2},{text:'Wed',id:3},{text:'Thu',id:4},{text:'Fri',id:5},{text:'Sat',id:6}]
+
   //선택 연도, 달, 일
   const [selectedYear, setSelectedYear] = useState<number>(currentYear);
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
@@ -31,7 +33,7 @@ const Calendar = () => {
       setSelectedMonth(selectedMonth - 1)
     }
     setSelectedDay(0)
-  },[selectedMonth])
+  },[selectedMonth, selectedYear])
   // 달 다음 버튼
   const ActionMonthRight =  useCallback(() => {
     if(selectedMonth === 12){
@@ -41,7 +43,7 @@ const Calendar = () => {
       setSelectedMonth(selectedMonth + 1)
     }
      setSelectedDay(0)
-  },[selectedMonth])
+  },[selectedMonth,selectedYear])
   // 선택한 날짜
   const selectActive = (i:number):void=>  {
     setSelectedDay(i)
@@ -53,7 +55,7 @@ const Calendar = () => {
 
     for(const nowDay of weekTitles){
       const day:number = new Date(selectedYear, selectedMonth-1, 1).getDay()
-      if(weekTitles[day] === nowDay){
+      if(weekTitles[day].text === nowDay.text){
         for(let i=0; i<selectLastDate; i++){
           dayArr.push(i+1)
         }
@@ -70,26 +72,36 @@ const Calendar = () => {
       <header>
         <h1>{selectedYear}</h1>
         <h2>
-          {selectedMonth}월
-          <span className="arrow_left" onClick={ActionMonthLeft}>❮</span>
-          <span className="arrow_right" onClick={ActionMonthRight}>❯</span>
+          <p className="month_text">
+          {(selectedMonth === 1 && 'JANUARY') || (selectedMonth === 2 && 'FEBRUARY') || (selectedMonth === 3 && 'MARCH') || 
+            (selectedMonth === 4 && 'APRIL') || (selectedMonth === 5 && 'MAY') || (selectedMonth === 6 && 'JUNE') || 
+            (selectedMonth === 7 && 'JULY') || (selectedMonth === 8 && 'AUGUST') ||  (selectedMonth === 9 && 'SEPTEMBER') || 
+            (selectedMonth === 10 && 'OCTOBER') || (selectedMonth === 11 && 'NOVEMBER') || (selectedMonth === 12 && 'DECEMBER')}
+          </p>
+          <p className="arrow_right" onClick={ActionMonthRight}>❯</p>
+          <p className="arrow_left" onClick={ActionMonthLeft}>❮</p>
         </h2>  
       </header>
-      <ul>{listItems}</ul>
+      <ul>
+        {
+          weekTitles.map((weekTitle:weekType, i:number) => ( 
+            <li key={weekTitle.id} className={classnames({sunday: i === 0, saturday: i === 6})}>{weekTitle.text}</li>
+          ))
+        }
+      </ul>
       <div className="calendar_cnt">
          {
           returnDay().map((value:number, index:number) => {
             return(
               value > 0 ?
               <div key={`id_${value}`}
-              className={classnames(
+              className={classnames('box_date',
                 {today: currentYear === selectedYear && currentMonth === selectedMonth && currentDay === value},
                 {selectActive: value === selectedDay }
               )}
-              onClick={() => selectActive(value)}>{value}</div>:<div className="box_date"></div>
+              onClick={() => selectActive(value)}>{value}</div>:<div></div>
             )
           })
-          
          }
       </div>
     </div>
