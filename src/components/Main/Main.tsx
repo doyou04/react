@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/Main.scss';
+import '../../style/Main.scss';
  import Calendar from './Calendar';
 import List from './List';
 

@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useMemo} from 'react';
-import '../style/Calendar.scss';
+import '../../style/Calendar.scss';
 import classnames from 'classnames';
 
 const Calendar = () => {
