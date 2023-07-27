@@ -1,45 +1,92 @@
-$primary-color: #556361;
+$primary-color: #02cbcb;
 $primary-font: 'Noto Sans KR';
-$random: random(4);
-$list-color: (#ed8e8e,#56c1ff,#a58eed,#ed8ea8);
+$random: random(6);
+$list-color: (#ed8e8e,#8cd5ff,#a58eed,#ed8ea8,#bfe395,#7fe3e0);
 $random-colors: nth($list-color, $random);
 
 .list_main {
     overflow: hidden;
-    width: 100%;
+    
     font-family: $primary-font;
-    ul {
+    h3 {
+        overflow:hidden;
+        span {
+
+        }
+        strong {
+            font-weight: bold;
+        }
+    }
+    .list_cnt_wrap {
         margin: 20px 0 0;
-        padding: 0;
-        li {
-            min-height: 100px;
-            margin: 0 0 15px;
-            padding: 10px;
-            list-style: none;
-            background: $random-colors;
-            border-radius: 8px;
-            box-sizing: border-box;
-            p {
-                margin: 0;
+        .list_cnt {
+            overflow: hidden;
+            padding: 0;
+            .list_check {
+                float: left;
+                width: 10%;
+                margin: 10px 0 0;
                 padding: 0;
-                color: #fff;
-                &.list_sub_text {
-                    margin-bottom: 10px;
-                    font-size: 11px;
-                    font-weight: lighter;
+                input {
+                    display: none;
+                   
                 }
-                &.list_title {
-                    margin-bottom: 5px;
-                    font-size: 15px;
-                    font-weight: bold;
+                label {
+                    display: flex;
+                    width: 15px;
+                    height: 15px;
+                    background-color: #fff;
+                    border-radius: 15px;
+                    border: 2px solid #bbb;
+                    box-sizing: border-box;
                 }
-                &.list_text {
-                    font-size: 12px;
-                    font-weight: normal;
+                input:checked + label {
+                    background-color: $primary-color;
                 }
+                input:checked + label::after {
+                    content:'✔';
+                    width: 10px;
+                    height: 10px;
+                    margin: -3px 0 0 1px;
+                    font-size: 10px;
+                    text-align: center;
+                    color: #fff
+                  }
+                
             }
-            
-            
+            .list_box {
+                float: left;
+                width: 90%;
+                min-height: 100px;
+                margin: 0 0 10px;
+                padding: 15px;
+                background: $random-colors;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                box-sizing: border-box;
+                p {
+                    margin: 0;
+                    padding: 0;
+                    color: #fff;
+                    &.list_sub_text {
+                        margin-bottom: 10px;
+                        font-size: 11px;
+                        font-weight: lighter;
+                    }
+                    &.list_title {
+                        margin-bottom: 5px;
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+                    &.list_text {
+                        font-size: 12px;
+                        font-weight: normal;
+                    }
+                }
+                
+                
+            }
         }
     }
    

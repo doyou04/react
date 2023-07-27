@@ -2,6 +2,7 @@ $primary-color: #02cbcb;
 
 .calendar_main {
 	width: 350px; 
+	height: 392px;
 	margin: auto;
 	header {
 		h1 {
@@ -23,14 +24,14 @@ $primary-color: #02cbcb;
 				margin: 0;
 				float: right;
 				font-size: 18px;
-				color: #c1baba;
+				color: #999292;
 			}
 			.arrow_right {
 				margin: 0;
 				float: right;
 				font-size: 18px;
 				margin-left: 15px;
-				color: #c1baba;
+				color: #999292;
 			}
 		}		
 	}
