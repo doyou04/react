@@ -1,17 +1,14 @@
 import React, {useCallback, useState, useMemo} from 'react';
 import '../../style/Calendar.scss';
 import classnames from 'classnames';
+import {weekType} from './Main';
 
-const Calendar = () => {
-  interface weekType  {
-    text: string;
-    id: number;
-  }
-  const newDate:Date = new Date();
-  const currentYear:number = newDate.getFullYear();
-  const currentMonth:number = newDate.getMonth() + 1;
-  const currentDay:number = newDate.getDate()
-  const weekTitles:weekType[]= useMemo(() => [{text:'Sun',id:0},{text:'Mon',id:1},{text:'Tue',id:2},{text:'Wed',id:3},{text:'Thu',id:4},{text:'Fri',id:5},{text:'Sat',id:6}],[]) // 요일
+interface getSelectMonthProps  {
+  getSelectMonth(e:number): void;
+}
+
+
+const Calendar = ({currentYear, currentMonth, currentDay, weekTitles, getSelectMonth} : {currentYear:number, currentMonth:number, currentDay:number, weekTitles:weekType,getSelectMonth:getSelectMonthProps}) => {
   //선택 연도, 달, 일
   const [selectedYear, setSelectedYear] = useState<number>(currentYear);
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
@@ -26,11 +23,14 @@ const Calendar = () => {
   const ActionMonthLeft = useCallback(() => {
     if(selectedMonth === 1){
       setSelectedMonth(12)
+      getSelectMonth(12)
       setSelectedYear(selectedYear - 1)
     }else{
       setSelectedMonth(selectedMonth - 1)
+      getSelectMonth(selectedMonth - 1)
     }
-    setSelectedDay(0)
+    setSelectedDay(0);
+
   },[selectedMonth, selectedYear])
   // 달 다음 버튼
   const ActionMonthRight =  useCallback(() => {
@@ -77,7 +77,7 @@ const Calendar = () => {
       </header>
       <ul >
         {
-          weekTitles.map((weekTitle:weekType, i:number) => 
+          weekTitles.map((weekTitle:any, i:number) => 
             <li key={weekTitle.id.toString()} className={classnames({sunday: i === 0, saturday: i === 6})}>{weekTitle.text}</li>
           )
         }

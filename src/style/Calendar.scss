@@ -24,14 +24,22 @@ $primary-color: #02cbcb;
 				margin: 0;
 				float: right;
 				font-size: 18px;
-				color: #999292;
+				color: #d3d1d1;
+				cursor: pointer;
+				&:hover {
+					color: #909090;
+				}
 			}
 			.arrow_right {
 				margin: 0;
 				float: right;
 				font-size: 18px;
 				margin-left: 15px;
-				color: #999292;
+				color: #d3d1d1;
+				cursor: pointer;
+				&:hover {
+					color: #909090;
+				}
 			}
 		}		
 	}
