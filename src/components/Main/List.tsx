@@ -3,8 +3,7 @@ import axios from 'axios';
 import '../../style/List.scss';
 import classnames from 'classnames';
 
-
-const List = () => {
+const List = ({selectedDate}:{selectedDate:string}) => {
   interface listDataType {
     id: number;
     title: string;
@@ -14,7 +13,9 @@ const List = () => {
     timeEnd: string;
     check: boolean;
   }
-  const [listData, setListData] = useState<listDataType[]>([])
+  
+  const currentDay:number = new Date().getDate()
+  const [listData, setListData] = useState<listDataType[]>([]);
 
   useEffect(() => {
     const fetchList = async () => {
@@ -34,15 +35,17 @@ const List = () => {
 
     newList[id-1].check = !check;
     setListData(newList)
-    console.log(listData)
+   
   },[listData]) 
  
 
   return (
     <div className="list_main">
       <h3>
-        <span>17</span>
-        <strong>Today</strong>
+        <span>
+          {selectedDate.split("-")[2] === currentDay.toString() ? 'Today' : selectedDate.split("-")[2]}          
+        </span>
+        {/* <strong>Today</strong> */}
       </h3>
       <div className="list_cnt_wrap">
         {
@@ -50,7 +53,6 @@ const List = () => {
             return(
               <div className="list_cnt" key={data.id}>
                 <p className="list_check">
-                  {/* <input type="checkbox" id="checkInp" name="checkInp" checked={checked} onChange={() => todolist} /> */}
                   <input type="checkbox" id={`checkInp${data.id}`} name={`checkInp${data.id}`} checked={data.check} onChange={() => todolist(data.id, data.check)}/>
                   <label htmlFor={`checkInp${data.id}`}></label>
                 </p>

@@ -1,47 +1,63 @@
-import React, {useCallback, useState, useMemo} from 'react';
+import React, {useCallback, useState, useMemo, useEffect} from 'react';
 import '../../style/Calendar.scss';
 import classnames from 'classnames';
-import {weekType} from './Main';
-
-interface getSelectMonthProps  {
-  getSelectMonth(e:number): void;
-}
 
 
-const Calendar = ({currentYear, currentMonth, currentDay, weekTitles, getSelectMonth} : {currentYear:number, currentMonth:number, currentDay:number, weekTitles:weekType,getSelectMonth:getSelectMonthProps}) => {
+const Calendar = ({ getSelectDate}:{getSelectDate:Function}) => {
+  interface weekType  {
+    text: string;
+    id: number;
+  }
+  const newDate:Date = new Date();
+  const currentYear:number = newDate.getFullYear();
+  const currentMonth:number = newDate.getMonth() + 1;
+  const currentDay:number = newDate.getDate()
+  const weekTitles:weekType[]= useMemo(() => [{text:'Sun',id:0},{text:'Mon',id:1},{text:'Tue',id:2},{text:'Wed',id:3},{text:'Thu',id:4},{text:'Fri',id:5},{text:'Sat',id:6}],[]) 
   //선택 연도, 달, 일
   const [selectedYear, setSelectedYear] = useState<number>(currentYear);
   const [selectedMonth, setSelectedMonth] = useState<number>(currentMonth);
   const [selectedDay, setSelectedDay] = useState<number>(0);
   const selectLastDate:number = new Date(selectedYear, selectedMonth, 0).getDate() // 선택 달 마지막 날짜(일)
 
+  // 초기 렌더링 오늘 날짜 가져오기
+  useEffect(() => {
+    let month = currentMonth <  10 ? '0' + currentMonth : currentMonth
+    let day = currentDay < 10 ? '0' + currentDay : currentDay
+    
+    getSelectDate(`${currentYear}-${month}-${day}`);
+  },[])
+
   // 선택한 날짜 표시
   const selectActive = (i:number):void=>  {
-    setSelectedDay(i)
+    let month = selectedMonth <  10 ? '0' + selectedMonth : selectedMonth
+    let index = i < 10 ? '0' + i : i
+
+    setSelectedDay(i);
+    getSelectDate(`${selectedYear}-${month}-${index}`);
   }
+
   // 달 이전 버튼
   const ActionMonthLeft = useCallback(() => {
     if(selectedMonth === 1){
-      setSelectedMonth(12)
-      getSelectMonth(12)
-      setSelectedYear(selectedYear - 1)
+      setSelectedMonth(12);
+      setSelectedYear(selectedYear - 1);
     }else{
-      setSelectedMonth(selectedMonth - 1)
-      getSelectMonth(selectedMonth - 1)
+      setSelectedMonth(selectedMonth - 1);
     }
     setSelectedDay(0);
-
   },[selectedMonth, selectedYear])
+
   // 달 다음 버튼
   const ActionMonthRight =  useCallback(() => {
     if(selectedMonth === 12){
-      setSelectedYear(selectedYear + 1)
-      setSelectedMonth(1)
+      setSelectedYear(selectedYear + 1);
+      setSelectedMonth(1);
     }else{
-      setSelectedMonth(selectedMonth + 1)
+      setSelectedMonth(selectedMonth + 1);
     }
-     setSelectedDay(0)
+     setSelectedDay(0);
   },[selectedMonth,selectedYear])
+  
   // 선택 달 cell
   const returnDay = useCallback(() => {
     // 선택 달 첫째날 요일 0~6 (일~토)
