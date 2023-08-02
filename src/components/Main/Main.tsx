@@ -11,12 +11,8 @@ const Main = () => {
 
   return (
     <div className="main">      
-      <Calendar 
-        getSelectDate={getSelectDate}
-      />
-      <List 
-        selectedDate={selectedDate}
-      />
+      <Calendar getSelectDate={getSelectDate}/>
+      <List selectedDate={selectedDate}/>
     </div>
   );
 }

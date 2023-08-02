@@ -6,15 +6,35 @@ $random-colors: nth($list-color, $random);
 
 .list_main {
     overflow: hidden;
-    
+    padding: 15px;
+    background: #fff;
     font-family: $primary-font;
-    h3 {
-        overflow:hidden;
-        span {
-
+    .list_title_wrap {
+        overflow: hidden;
+        margin: 10px 0 0;
+        h3 {
+            overflow: hidden;
+            float: left;
+            margin: 0;
+            strong {
+                font-size: 18px;
+                font-weight: 800;
+            }
+            span {
+                margin-left: 5px;
+                font-size: 15px;
+                font-weight: 500;
+                color: #9f9c9c;
+            }
+            p {
+                float: right;
+            }
         }
-        strong {
-            font-weight: bold;
+        p {
+            float: right;
+            margin: 4px 0 0;
+            height: 20px;
+            padding: 0;
         }
     }
     .list_cnt_wrap {
@@ -58,6 +78,7 @@ $random-colors: nth($list-color, $random);
                 
             }
             .list_box {
+                position: relative;
                 float: left;
                 width: 90%;
                 min-height: 100px;
@@ -69,17 +90,32 @@ $random-colors: nth($list-color, $random);
                 border-bottom-right-radius: 20px;
                 box-sizing: border-box;
                 &.checked {
-                    background: #dfdfdf;
+                    background: #dfdddd;
+                }
+                .list_box_close {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    cursor: pointer;
+                }
+                .list_sub_text {
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    font-weight: lighter;
+                    .list_time_icon {
+                        float: left;
+                        margin-top: 3px;
+                        margin-right: 3px;
+                    }
+                    p {
+                        float:left;
+                        font-size: 11px;
+                    }
                 }
                 p {
                     margin: 0;
                     padding: 0;
                     color: #fff;
-                    &.list_sub_text {
-                        margin-bottom: 10px;
-                        font-size: 11px;
-                        font-weight: lighter;
-                    }
                     &.list_title {
                         margin-bottom: 5px;
                         font-size: 15px;

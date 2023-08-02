@@ -1,9 +1,10 @@
 $primary-color: #02cbcb;
 
 .calendar_main {
-	width: 350px; 
-	height: 392px;
-	margin: auto;
+	width: 340px; 
+	margin: 0 auto;
+	padding: 10px;
+	border-bottom: 1px solid #dfdfdf;
 	header {
 		h1 {
 			margin: 15px 0 0 10px;
@@ -12,7 +13,7 @@ $primary-color: #02cbcb;
 		}
 		h2 {
 			overflow: hidden;
-			margin: 5px 10px 10px;
+			margin: 0 10px 10px;
 			color: $primary-color;
 			.month_text {
 				float: left;
@@ -49,7 +50,7 @@ $primary-color: #02cbcb;
 		padding: 0;
 		li {
 			float: left;
-			width: 50px;
+			width: 48.5px;
 			list-style: none;
 			text-align: center;
 			font-weight: 600;
@@ -69,7 +70,7 @@ $primary-color: #02cbcb;
 			position: relative;
 			display: block;
 			float: left;
-			width: 50px;
+			width: 48.5px;
 			height: 50px;
 			text-align: center;
 			line-height: 50px;
