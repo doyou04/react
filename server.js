@@ -4,11 +4,13 @@ const path = require('path');
 const app = express();
 const db = require('./db.js');
 const route = require('./route.js');
+const cors = require('cors');
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'html'));
 db();
 // const server = require('http').createServer(app);
 // cors 사용 (cors 미들웨어 삽입)
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'html')));
 app.use('/', route);
 

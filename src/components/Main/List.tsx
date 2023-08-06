@@ -19,38 +19,57 @@ const List = ({selectedDate}:{selectedDate:string}) => {
   }
   const currentDay:number = new Date().getDate()
   const [listData, setListData] = useState<listDataType[]>([]);
-  const [popup, setPopup] = useState<boolean>(false)
-  const day:number = new Date(selectedDate).getDay()
+  const [popup, setPopup] = useState<boolean>(false);
+  const day:number = new Date(selectedDate).getDay();
 
+  // 리스트 데이터 가져오기
   useEffect(() => {
     const fetchList = async () => {
       try {
         const response = await axios.get('test.json');
 
         setListData([]);
-        setListData(response.data)
+        setListData(response.data);
       }catch(error){}
      
     }
-    fetchList()
+    fetchList();
+
   },[])
 
+  // 레이어 팝업 열기(등록 리스트)
   const popupEvt = () => {
     setPopup(true)
   }
-  const todolist = useCallback((id:number, check:boolean) => {
-    let newList = [...listData]
 
-    newList[id-1].check = !check;
-    setListData(newList)
-   
-  },[listData]) 
-
+  // 레이어 팝업 닫기(등록 리스트)
   const closePop = useCallback((payload:boolean) => {
     setPopup(payload)
   },[popup]);
- 
 
+  // 리스트 체크 
+  const checkList = useCallback((id:number, check:boolean) => {
+    let newList = [...listData]
+    let idx = newList.findIndex(data => data.id === id);
+    
+    newList[idx].check = !check;
+    setListData(newList)
+  },[listData]);
+
+  // 리스트 색 랜덤
+  const randomColor = useCallback(() => {
+    return Math.floor(Math.random() * 5);
+  },[]); 
+ 
+  // list 삭제
+  const deleteListbox = useCallback((id:number) => {
+    let newList = [...listData]
+    let idx = newList.findIndex(data => data.id === id);
+
+    newList.splice(idx,1)
+    setListData(newList)
+  },[listData]);
+  
   return (
     <div className="list_main">
       <div className="list_title_wrap">
@@ -66,15 +85,16 @@ const List = ({selectedDate}:{selectedDate:string}) => {
       </div>
       <div className="list_cnt_wrap">
         {
-          listData.map((data) => {
+          listData.map((data, i) => {
+            let a =  randomColor();
             return(
               <div className="list_cnt" key={data.id}>
                 <p className="list_check">
-                  <input type="checkbox" id={`checkInp${data.id}`} name={`checkInp${data.id}`} checked={data.check} onChange={() => todolist(data.id, data.check)}/>
+                  <input type="checkbox" id={`checkInp${data.id}`} name={`checkInp${data.id}`} checked={data.check} onChange={() => checkList(data.id, data.check)}/>
                   <label htmlFor={`checkInp${data.id}`}></label>
                 </p>
-                <div className={classnames('list_box', {checked: data.check})}>
-                  <AiOutlineClose className="list_box_close" size="15" color="#fff" />
+                <div className={classnames('list_box', `list_box_color${ a}`, {checked: data.check})}>
+                  <AiOutlineClose className="list_box_close" size="15" color="#fff" onClick={() => deleteListbox(data.id)}/>
                   <div className="list_sub_text">
                     <BiTime className="list_time_icon" size="13" color="#fff" />
                     <p>{data.timeStart} ~ {data.timeEnd}</p>
@@ -87,10 +107,7 @@ const List = ({selectedDate}:{selectedDate:string}) => {
          })
         }
       </div>
-      {
-        popup &&
-        <Write closePop={closePop}  />
-      }
+      { popup && <Write closePop={closePop}/> }
     </div>
   );
 }

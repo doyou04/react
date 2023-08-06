@@ -1,8 +1,5 @@
 $primary-color: #02cbcb;
 $primary-font: 'Noto Sans KR';
-$random: random(6);
-$list-color: (#ed8e8e,#8cd5ff,#a58eed,#ed8ea8,#bfe395,#7fe3e0);
-$random-colors: nth($list-color, $random);
 
 .list_main {
     overflow: hidden;
@@ -32,7 +29,7 @@ $random-colors: nth($list-color, $random);
         }
         p {
             float: right;
-            margin: 4px 0 0;
+            margin: 0;
             height: 20px;
             padding: 0;
         }
@@ -84,11 +81,28 @@ $random-colors: nth($list-color, $random);
                 min-height: 100px;
                 margin: 0 0 10px;
                 padding: 15px;
-                background: $random-colors;
                 border-top-left-radius: 20px;
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
                 box-sizing: border-box;
+                &.list_box_color0 {
+                   background: #ed8e8e;
+                }
+                &.list_box_color1 {
+                    background: #8cd5ff;
+                 }
+                 &.list_box_color2 {
+                    background: #a58eed;
+                 }
+                 &.list_box_color3 {
+                    background: #ed8ea8;
+                 }
+                 &.list_box_color4 {
+                    background: #bfe395;
+                 }
+                 &.list_box_color5 {
+                    background: #7fe3e0; 
+                 }
                 &.checked {
                     background: #dfdddd;
                 }
@@ -101,10 +115,9 @@ $random-colors: nth($list-color, $random);
                 .list_sub_text {
                     overflow: hidden;
                     margin-bottom: 10px;
-                    font-weight: lighter;
+                    font-weight: normal;
                     .list_time_icon {
                         float: left;
-                        margin-top: 3px;
                         margin-right: 3px;
                     }
                     p {
