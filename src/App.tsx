@@ -7,8 +7,9 @@ import axios from 'axios';
 
 function App() {
   const sendRequest = async() => {
-    const response = await axios.get('http://localhost:8080');
+    const response = await axios.get('http://localhost:8080/');
 
+      console.log(response)
   }
 
   useEffect(() => {
