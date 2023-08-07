@@ -30,8 +30,9 @@ const List = ({selectedDate}:{selectedDate:string}) => {
 
         setListData([]);
         setListData(response.data);
-      }catch(error){}
-     
+      }catch(error){
+
+      }
     }
     fetchList();
 
@@ -86,14 +87,13 @@ const List = ({selectedDate}:{selectedDate:string}) => {
       <div className="list_cnt_wrap">
         {
           listData.map((data, i) => {
-            let a =  randomColor();
             return(
               <div className="list_cnt" key={data.id}>
                 <p className="list_check">
                   <input type="checkbox" id={`checkInp${data.id}`} name={`checkInp${data.id}`} checked={data.check} onChange={() => checkList(data.id, data.check)}/>
                   <label htmlFor={`checkInp${data.id}`}></label>
                 </p>
-                <div className={classnames('list_box', `list_box_color${ a}`, {checked: data.check})}>
+                <div className={classnames('list_box', `list_box_color${data.id}`, {checked: data.check})}>
                   <AiOutlineClose className="list_box_close" size="15" color="#fff" onClick={() => deleteListbox(data.id)}/>
                   <div className="list_sub_text">
                     <BiTime className="list_time_icon" size="13" color="#fff" />

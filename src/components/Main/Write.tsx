@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import classnames from 'classnames';
 import DatePicker from "react-datepicker";
 import '../../style/Write.scss';
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,7 +15,7 @@ const Write = ({closePop}:{closePop:Function}) => {
     document.body.style.cssText = `
       position: fixed; 
       top: -${window.scrollY}px;
-      overflow-y: scroll;
+      overflow-y: scroll; 
       width: 100%;`;
     return () => {
       const scrollY = document.body.style.top;
