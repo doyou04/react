@@ -1,24 +1,24 @@
 // server작성
 const express = require('express');
-const path = require('path');
 const app = express();
+const port = 5000;
+const mongoose = require("mongoose")
 const bodyParser = require('body-parser');
-const db = require('./db.js');
-const route = require('./route.js');
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'html'));
-db();
-// const server = require('http').createServer(app);
-// cors 사용 (cors 미들웨어 삽입)
-app.use(express.static(path.join(__dirname, 'html')));
-app.use('/', route);
-// app.use((req, res, next) => {
-//     res.status(404).send('일치 주소 없음');
-// })
-// app.use((err, req, res, next) => {
-//     console.error(err.stack);
-//     res.status(500).send('서버 에러!')
-// })
+ mongoose.connect('mongodb://127.0.0.1:27017/user_db_name', (err) => {
+	if (err) {
+		console.log(err.message);
+	} else {
+		console.log('Succesfully Connected!');
+	}
+});
+
+app.set('view engine','html');
+app.use(express.json({ extended:false }));
+app.use("/api/register", require("./routes/api/register"));
+//서버에서 가져온 데이터를 파싱해서 가져와준다.
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 app.listen(8080, () => {
     console.log('server is runnig on 8080');
