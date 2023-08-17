@@ -22,8 +22,19 @@ $primary-color: #02cbcb;
 				&:focus {
 					outline: none;
 					border: 3px solid $primary-color;
-				  }
+				}
+				&.error {
+					outline: none;
+					border: 2px solid #df0100;
+				}
 			}
+		}
+		p {
+			margin: 2px 0 0;
+			padding: 0;
+			font-size: 11px;
+			color: #df0100;
+
 		}
 	}
 	button {

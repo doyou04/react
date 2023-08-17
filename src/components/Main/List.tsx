@@ -26,10 +26,10 @@ const List = ({selectedDate}:{selectedDate:string}) => {
   useEffect(() => {
     const fetchList = async () => {
       try {
-        const response = await axios.get('test.json');
+        const { data } = await axios.get('test.json');
 
         setListData([]);
-        setListData(response.data);
+        setListData(data);
       }catch(error){
 
       }

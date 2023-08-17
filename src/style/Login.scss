@@ -52,10 +52,14 @@ $primary-color: #02cbcb;
     font-weight: 500;
     color: #fff;
   }
-  .go_join {
-    margin: 15px 0 0;
+  .go_join_btn {  
+    display: block;
+    width: 100px;
+    height: 25px;
+    margin: 20px auto;
     text-align: center;
     font-size: 15px;
     color: #7f7f7f;
+    text-decoration: none;
   }
 }
