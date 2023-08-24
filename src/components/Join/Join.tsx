@@ -78,8 +78,6 @@ const Join = () => {
     }
   },[name, email, password, navigate, inpValidate]);
 
-
-
   return (
     <div className="join_main">      
      <h1>

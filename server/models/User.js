@@ -43,10 +43,10 @@ userSchema.methods.comparePassword = function(plainPassword, cb){
 }
 
 userSchema.methods.generateToken = function(cb){
-	// let user = this;
-	let token = jwt.sign(this._id.toHexString(), 'secretToken');
-	this.token = token;
-	this.save()
+	let user = this;
+	let token = jwt.sign(user._id.toHexString(), 'secretToken');
+	user.token = token;
+	user.save()
 	.then(user => {
 		cb(null, user);
 	})

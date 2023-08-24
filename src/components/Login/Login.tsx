@@ -26,6 +26,12 @@ const Login = () => {
     }
   }
 
+  const handleOnKeyPress = (e:any):void => {
+    if(e.key === 'ArrowDown'){
+      goLogin();
+    }
+  }
+
   return (
     <div className="login_main"> 
       <h1>
@@ -40,12 +46,12 @@ const Login = () => {
       </div>
       <div className="filed">
         <label htmlFor="pw">
-          <input type="password" id="pw" value={password}  placeholder=' ' onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" id="pw" value={password}  placeholder=' ' onChange={(e) => setPassword(e.target.value)}  onKeyDown={handleOnKeyPress}/>
           <p>PASSWORD</p>
         </label>
       </div>
       <button onClick={goLogin}>LOGIN</button>
-      <Link to="/join" className="go_join_btn">회원가입</Link>
+      <Link to="/join" className="go_join_btn" >회원가입</Link>
     </div>
   );
 }

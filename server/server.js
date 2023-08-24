@@ -78,9 +78,8 @@ app.get('/api/users/auth', auth, (req, res) => {
 		email: req.user.email,
 		name: req.user.name,
 	})
-	console.log('d'+req.user.email)
+	console.log(req.user.email)
 })
-
 // 로그아웃
 app.get(`/api/users/logout`, auth, (req, res) => {
 	User.findOneAndUpdate({_id: req.user._id}, {token: ''}, (err, user) => {
