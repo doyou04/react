@@ -40,7 +40,7 @@ app.post("/api/users/login", (req, res) => {
 		if(!user){
 			return res.json({
 				loginSuccess: false,
-				message: '이메일에 해당되는 회원이 없습니다.',
+				message: '이메일에 해당되는 회원이 없습니다. ',
 			});
 		}
 
