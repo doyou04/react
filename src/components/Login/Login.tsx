@@ -4,7 +4,7 @@ import '../../style/Login.scss';
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login:React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
@@ -55,5 +55,5 @@ const Login = () => {
     </div>
   );
 }
-
+        
 export default Login;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import DatePicker from "react-datepicker";
 import '../../style/Write.scss';
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,7 +29,7 @@ const Write = ({closePop}:{closePop:Function}) => {
       <div className="write_cnt">     
           <AiFillCloseCircle className="write_pop_close" size="35" color="#02cbcb" onClick={closeEvtFn} />  
           <div className="write_form">
-            <div className="write_title">To Do</div>
+            <div className="write_title">REGIST</div>
             <div className="write_txt_wrap">
               <p className="write_txt_title">Date</p>
               <DatePicker

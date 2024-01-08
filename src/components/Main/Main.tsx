@@ -15,7 +15,7 @@ const Main = () => {
   useEffect( ()=> {
     const isAuth = async() => {
      try { 
-        const  {data}  = await axios.get(`http://localhost:5000/api/users/auth`);
+        const {data}  = await axios.get(`http://localhost:5000/api/users/auth`);
 
         if(!data.isAuth){
           navigate('/', { replace: true });
