@@ -41,6 +41,7 @@ app.post("/api/users/register", (req, res) => {
 });
 // 로그인
 app.post("/api/users/login", (req, res) => {
+  // 요청된 이메일 데이터베이스에 있는지 찾음
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -50,6 +51,7 @@ app.post("/api/users/login", (req, res) => {
         });
       }
 
+      // 요청된 이메일이 데이터 베이스에 있으면 비밀번호가 맞는지 비밀번호 확인
       user.comparePassword(req.body.password, (error, isMatch) => {
         if (!isMatch) {
           return res.json({
@@ -57,6 +59,7 @@ app.post("/api/users/login", (req, res) => {
             message: "비밀번호가 틀렸습니다.",
           });
         }
+        // 비밀번호까지 맞다면 토큰 생성
         user.generateToken((error, user) => {
           if (error) {
             return res.status(400).send(error);
