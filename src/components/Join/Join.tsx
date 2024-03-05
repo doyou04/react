@@ -57,7 +57,7 @@ const Join = () => {
   },[inpValidate])
 
   const register = useCallback(async () => {
-    if(inpValidate){
+    if(!inpValidate){
       alert(`가입 정보를 입력해 주세요.`);
       setValidate('name', '');
       setValidate('email', '');
