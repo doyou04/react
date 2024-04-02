@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+const bcrypt = require("bcrypt"); // 비밀번호를 암호화 시키기 위해
+const saltRounds = 10; // salt를 몇 글자로 할지
 const jwt = require("jsonwebtoken"); // 토큰 생성을 위해
 
 const userSchema = mongoose.Schema({
