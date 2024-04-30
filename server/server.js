@@ -17,7 +17,7 @@ app.use(cors());
 
 mongoose
   .connect(
-    "mongodb+srv://admin:lmsVTalwIIbnBke9@cluster0.toliip1.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://admin:lmsVTalwIIbnBke9@cluster0.toliip1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     {
       // useNewUrlParser:true,
     }
@@ -92,6 +92,7 @@ app.get(`/api/users/logout`, auth, (req, res) => {
     return res.status(200).send({ success: true });
   });
 });
+
 // 게시물 등록
 // app.post('/api/todo/create', (req, res) => {
 // 	const list = new List(req.body);

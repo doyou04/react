@@ -24,6 +24,10 @@ const Write = ({closePop}:{closePop:Function}) => {
     };
   }, [])
 
+  const onSubmit = () => {}
+
+
+
   return (
     <div className="write_main" >    
       <div className="write_cnt">     
@@ -56,7 +60,7 @@ const Write = ({closePop}:{closePop:Function}) => {
               <p className="write_txt_title">Content</p>
               <textarea className="write_textarea" />
             </div>
-            <input type="submit" value="Submit" className="submitBtn"/>
+            <input type="submit" value="Submit" className="submitBtn"  onClick={onSubmit}/>
           </div>
       </div>    
       <div className="wrtie_bg"></div>                                   
