@@ -1,13 +1,13 @@
 // server작성
 const express = require("express");
 const app = express();
-const port = 5000;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
+require("dotenv").config();
 // const { List } = require('./modles/List');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,12 +16,10 @@ app.use(cookieParser());
 app.use(cors());
 
 mongoose
-  .connect(
-    "mongodb+srv://admin:lmsVTalwIIbnBke9@cluster0.toliip1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    {
-      // useNewUrlParser:true,
-    }
-  )
+  .connect(process.env.MONGO_URI, {
+    // useNewUrlParser:true,
+    // useMongoClient:true
+  })
   .then(() => console.log("MongoDB Connected ... "))
   .catch((err) => console.log(err));
 
@@ -106,6 +104,6 @@ app.get(`/api/users/logout`, auth, (req, res) => {
 // 	})
 // })
 
-app.listen(port, () => {
-  console.log(`server is runnig on ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`server is runnig on ${process.env.PORT}`);
 });

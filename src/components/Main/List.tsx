@@ -46,7 +46,7 @@ const List = ({selectedDate}:{selectedDate:string}) => {
   // 레이어 팝업 닫기(등록 리스트)
   const closePop = useCallback((payload:boolean) => {
     setPopup(payload)
-  },[popup]);
+  },[]);
 
   // 리스트 체크 
   const checkList = useCallback((id:number, check:boolean) => {
@@ -95,7 +95,7 @@ const List = ({selectedDate}:{selectedDate:string}) => {
                 </p>
                 <div className={classnames('list_box', `list_box_color${data.id}`, {checked: data.check})}>
                   <AiOutlineClose className="list_box_close" size="15" color="#fff" onClick={() => deleteListbox(data.id)}/>
-                  <div className="list_sub_text">
+                  <div className="list_sub_text" >
                     <BiTime className="list_time_icon" size="13" color="#fff" />
                     <p>{data.timeStart} ~ {data.timeEnd}</p>
                   </div>

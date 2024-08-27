@@ -5,13 +5,11 @@ import '../../style/Join.scss';
 import { useNavigate } from "react-router-dom";
 
 const Join = () => {
- 
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [inpValidate, setInpValidate] = useState<boolean[]>([false,false,false]);
   const navigate = useNavigate();
-
   const setValidate = useCallback((title:string, value:string) => {
     let newInpValidate = [...inpValidate];
 
